@@ -1,6 +1,0 @@
-# Curador de Pini — dependencias Python
-streamlit>=1.35
-pypdf>=5.0
-sentence-transformers>=3.0
-torch>=2.0
-openai-whisper>=20240930
