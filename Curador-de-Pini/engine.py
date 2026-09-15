@@ -243,6 +243,14 @@ def _get_embeddings(base: list[dict[str, str]]):
     from sentence_transformers import util
     import torch
 
+    if EMBEDDINGS_PT.exists():
+        try:
+            tensor_pt = torch.load(EMBEDDINGS_PT, weights_only=True)
+            if tensor_pt.shape[0] == len(base):
+                return tensor_pt, util
+        except Exception:
+            pass
+
     # Carga ultrarrápida (0.1s) del archivo binario PyTorch precalculado si coincide el tamaño
     if EMBEDDINGS_PT.exists():
         try:
